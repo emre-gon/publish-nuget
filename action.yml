@@ -1,5 +1,5 @@
-name: Publish NuGet 2
-author: Rebel028
+name: Publish NuGet 2-v
+author: emre-gon
 description: Build, pack & publish nuget packages on project version change. Works with GPR. Forked from brandedoutcast/publish-nuget
 
 inputs:
