@@ -91,8 +91,9 @@ class Action {
         
         this._executeInProcess(`dotnet build -c Release ${this.projectFile}`)
 
-        const noBuildOption = this.pack_no_build ? "--no-build": ""
-        this._executeInProcess(`dotnet pack ${this.includeSymbols ? "--include-symbols -p:SymbolPackageFormat=snupkg" : ""} ${noBuildOption} -c Release ${this.projectFile} -o .`)
+        const noBuildOption = this.pack_no_build ? "--no-build" : ""
+        const versionOption = "/p:Version=" + this.version;
+        this._executeInProcess(`dotnet pack ${this.includeSymbols ? "--include-symbols -p:SymbolPackageFormat=snupkg" : ""} ${noBuildOption} ${versionOption} -c Release ${this.projectFile} -o .`)
 
         const packages = fs.readdirSync(".").filter(fn => fn.endsWith("nupkg"))
         console.log(`Generated Package(s): ${packages.join(", ")}`)
